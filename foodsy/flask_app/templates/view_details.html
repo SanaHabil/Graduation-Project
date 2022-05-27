@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Painting Show</title>
+</head>
+<body>
+    <div style="margin:30px;" class=" d-flex ">
+        <h2 style="">Welcome {{current_user.first_name}}!</h2>
+        <a href="/new_painting"><button style="margin-left: 1000px;" class="btn btn-primary">Add Painting</button></a> 
+        <a href="/"><button style="margin-left: 100px;" class="btn btn-primary">Home</button></a>    
+        <a href="/reset"><button style="margin-left:20px;" class="btn btn-primary">Logout</button></a>
+    </div>
+    <h4 style="margin:30px;" class="">{{ one_painting.title }}</h4>
+    <div class="card border border-secondary bg-light mb-3" style="padding: 30px; width: 50rem; margin-left: 30px;">
+        <table> 
+            <form action="/buy_painting/{{one_painting.id}}" method="post">
+                <tbody>
+                    <tr>
+                        <th scope="row">Painted by:</th>
+                        <td>{{ one_painting.painter }} {{one_painting.painter_last_name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Description:</th>
+                        <td>{{ one_painting.description }} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Price:</th>
+                        <td>${{ one_painting.price }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Quantity:</th>
+                        <td>{{ one_painting.quantity }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Number Purchased:</th>
+                        <td>{{ one_painting.number_purchased }}</td>
+                    </tr>
+                    {% if one_painting.quantity > one_painting.number_purchased %}
+                        <tr>
+                            <td><a href=""><button>Buy</button></a></td>
+                            <input type="hidden" name="painter_id" value={{one_painting.painter_id}}>
+                            <input type="hidden" name="buyer_id" value={{session.user_id}} >
+                            <input type="hidden" name="number_purchased" value={{one_painting.number_purchased}} >
+                            <input type="hidden" name="description" value={{one_painting.description}}>
+                            <input type="hidden" name="quantity" value={{one_painting.quantity}}>
+                        </tr>
+                    {% else %}
+                        {% if one_painting.quantity == one_painting.number_purchased %}
+
+                            <tr>
+                                <td><h4>Sold Out</h4></td>
+                                
+                            </tr>
+                        {% endif %} 
+                    {% endif %}        
+                </tbody>
+            </form>
+        </table>
+    </div>
+</body>
+</html>

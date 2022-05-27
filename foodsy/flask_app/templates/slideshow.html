@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Foodsy</title>
+    </head>
+    <body class="container">
+        <div class="d-flex justify-content-between">
+            <h1 class="header-top" style="font-size:70px; font-family:'Courier New', Courier, monospace; margin:10px;"> FOODSY</h1>
+            <div class="d-flex" style="margin:30px;">
+                <a href="/upload_recipe"><button style="margin-right: 10px;" class="btns" rounded-pill>Add A Recipe</button></a>
+                <a href="/edit_user/{{current_user.id}}"><button style="margin-right: 10px;"  class="btns">Edit Profile</button></a>
+                <a href=""><button class="btns" style="margin-right: 10px;">My Favorits Recipes</button></a>    
+                <a href="/results" class="links-top"><button class="btns" style="margin-right: 10px;">All Recipes</button></a>
+                <a href="/reset" class="links-top"><button class="btns">Log Out</button></a>
+            </div>
+        </div>
+    <div class="slider" style="margin-top:150px;">
+        <span id="slide-1"></span>
+        <span id="slide-2"></span>
+        <span id="slide-3"></span>
+        <div class="image-container">
+            <img src="/static/images/food2.jpeg" class="slide" width="600" height="400" />
+            <img src="/static/images/food3.jpeg" class="slide" width="600" height="400" />
+            <img src="/static/images/food6.jpeg" class="slide" width="600" height="400" /> 
+        </div>
+        <div class="buttons">
+            <a href="#slide-1"></a>
+            <a href="#slide-2"></a>
+            <a href="#slide-3"></a>
+        </div>
+        </div>
+</body>
+</html>     
+
+

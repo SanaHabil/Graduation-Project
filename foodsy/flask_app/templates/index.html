@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODSY</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="container"> 
+    <div class="d-flex justify-content-between">
+        <h1 class="header-top" style="font-size:70px; font-family:'Courier New', Courier, monospace; margin:10px;"> FOODSY</h1>
+        <div class="d-flex" style="margin:30px;">
+            <a class="links-top" href="/home"><button class="btns"style="margin-right: 10px;" >Home</button></a>
+            <a href="/results" class="links-top"><button class="btns" style="margin-right: 10px;">All Recipes</button></a>
+            <a class="links-top" href="/"><button class="btns" style="margin-right: 10px;">Join Now</button></a>
+            <a class="links-top" href="/login_pg"><button class="btns">Log In</button></a>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between" >
+        <div style="margin-top:100px;"class="col-lg-3 mx-auto text-center text-white forms-class">
+            <h1 class="text-warning"> Join Now</h1>
+            <form action="/register" method="post" class="form-group">
+                <table>
+                    <label for="first_name" style="display:block;text-align:left; margin-left:20px">First Name:</label>
+                    <input type="text" id="first_name" name="first_name"style="width:300px;"><br><br>
+                    <label for="last_name" style="display:block;text-align:left; margin-left:20px">Last Name:</label>
+                    <input type="text" id="last_name" name="last_name"style="width:300px;"><br><br>
+                    <label for="email_address" style="display:block;text-align:left; margin-left:20px">Email Address:</label>
+                    <input type="text" id="email_address" name="email_address"style="width:300px;"><br><br>
+                    <label for="address" style="display:block;text-align:left; margin-left:20px">Address</label>
+                    <input type="text" id="address" name="address"style="width:300px;"><br><br>
+                    <label for="state" style="display:block;text-align:left; margin-left:20px">State</label>
+                    <select id="state" style="display:block;text-align:left; margin-left:20px; width: 100px;" name="state">
+                        <option value="---">  </option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Guam">Guam</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Northern Marianas Islands">Northern Marianas Islands</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Puerto Rico">Puerto Rico</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Virgin Islands">Virgin Islands</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select>
+                    </select><br>
+                    <label for="password" style="display:block;text-align:left; margin-left:20px">Password:</label>
+                    <input type="password" id="password" name="password"style="width:300px;"><br><br>
+                    <label for="confirm_password" style="display:block;text-align:left; margin-left:20px">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password"style="width:300px;"><br><br>
+                    <a href="/register"><button style="display:block; margin-left:20px; margin-bottom:20px;" class="btn bg-warning text-white margin rounded-pill">Register</button></a>
+                </table> 
+            </form>
+            {% with messages = get_flashed_messages(category_filter=['register']) %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}    
+        </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODYSY</title>
+    <link rel="stylesheet" href="../static/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="container"> 
+    <div class="d-flex justify-content-between">
+        <h1 class="header-top" style="font-size:70px; font-family:'Courier New', Courier, monospace; margin:10px;"> FOODSY</h1>
+        <div class="d-flex" style="margin:30px;">
+            <a class="links-top" href="/home"><button class="btns"style="margin-right: 10px;" >Home</button></a>
+            <a href="/upload_recipe"><button style="margin-right: 10px;" class="btns">Add A Recipe</button></a>
+            <a href="/edit_user/{{current_user.id}}"><button style="margin-right:10px;"  class="btns">Edit Profile</button></a>
+            <a href="/my_fav_recipes/{{current_user.id}}"><button class="btns" style="margin-right: 10px;">My Favorites Recipes</button></a>    
+            <a href="/results" class="links-top"><button class="btns" style="margin-right: 10px;">All Recipes</button></a>
+            <a href="/reset" class="links-top"><button class="btns" >Log Out</button></a>
+        </div>
+    </div>
+    </div>
+        <h2 style="margin:30px;" class="header-top ">Recipe: {{ one_recipe.title }}</h2>
+        <table class="table table-striped w-auto">   
+            <tbody>
+                <tr class="forms-class table-hover">
+                    <th class="header-top" scope="row">Title:</th>
+                    <td class="from_db">{{ one_recipe.title }}</td>
+                </tr>
+                <tr class="forms-class table-hover">
+                    <th class="header-top" scope="row">Details:</th>
+                    <td class="from_db">{{ one_recipe.details }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

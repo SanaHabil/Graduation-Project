@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODSY</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body class="container"> 
+    <div class="d-flex justify-content-between">
+        <h1 class="header-top" style="font-size:70px; font-family:'Courier New', Courier, monospace; margin:10px;"> FOODSY</h1>
+        <div class="d-flex" style="margin:30px;">
+            <a class="links-top" href="/home"><button class="btns"style="margin-right: 10px;" >Home</button></a>
+            <a href="/upload_recipe"><button style="margin-right: 10px;" class="btns">Add A Recipe</button></a>
+            <a href="/edit_user/{{current_user.id}}"><button style="margin-right: 10px;"  class="btns">Edit Profile</button></a>
+            <a href="/my_fav_recipes/{{current_user.id}}"><button class="btns" style="margin-right: 10px;">My Favorites Recipes</button></a>    
+            <a href="/results" class="links-top"><button class="btns" style="margin-right: 10px;">All Recipes</button></a>
+            <a href="/reset" class="links-top"><button class="btns">Log Out</button></a>
+        </div>
+    </div>
+    
+    <div class="col-5 upload_form " style=" padding: 30px; margin-left:300px; margin-top: 100px;">
+        <p>
+            <h3 class=" header-top upload_form">Hi {{current_user.first_name}}!</h3>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </p>
+        <h3 class="upload_form">Add A New Recipe:</h3>
+        <form method="post" action="/upload_photo" enctype="multipart/form-data">
+            <label>Recipe Title:</label>
+            <input type="text" name="title" class="form-control"><br><br>
+            <input type="file" name="file" class="form-control" autocomplete="off" required>
+            <label>Details:</label>
+            <input type="text" name="details" class="form-control"><br><br>
+            <input type="hidden" name="user_id" value={{session.user_id}}>
+            <p>
+                <input type="submit" value="Upload" class="btn bg-warning text-white margin rounded-pill">
+            </p>
+        </form>
+    </div>
+    </body>
+    </html>     
+
+
